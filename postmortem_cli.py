@@ -22,7 +22,11 @@ def main(id: str, title: str, output: Path):
     date = datetime.date.today().isoformat()
     content = template.replace("{{ id }}", id).replace("{{ title }}", title).replace("{{ date }}", date)
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(content, encoding="utf-8")
+    try:
+        with output.open("x", encoding="utf-8") as report:
+            report.write(content)
+    except FileExistsError as exc:
+        raise click.ClickException(f"Report already exists: {output}") from exc
     click.echo(f"Created incident report at {output}")
 
 
