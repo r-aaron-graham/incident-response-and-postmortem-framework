@@ -14,14 +14,16 @@ lessons learned to prevent recurrence.
 
 ## Usage
 
+Install the dependency with `python -m pip install -r requirements.txt`.
 Generate a new postmortem:
 
 ```bash
-python postmortem_cli.py --id INC‑12345 --title "Outage in payment service" --output postmortems/INC‑12345.md
+python postmortem_cli.py --id INC-12345 --title "Outage in payment service" --output postmortems/INC-12345.md
 ```
 
 Fill out the resulting file with details of the incident, including a
-timeline, contributing factors, impact, and corrective actions.
+timeline, contributing factors, impact, and corrective actions. Existing files
+are preserved. See the [completed synthetic example](examples/incident-example.md).
 
 ## Conventions
 
